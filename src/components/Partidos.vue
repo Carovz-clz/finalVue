@@ -1,19 +1,21 @@
 <template>
     <div id="divPartidos">
-       <!-- <p v-if="mensajeError =! ''">{{mensajeError}}</p> -->
-        <table >
+       
+        <table v-if="mensajeError == ''">
             <tr>
                 <th colspan="5">Partidos de la {{jornadaSelec}}</th>
             </tr>
 
             <tr v-for="(partido, index) in partidos" :key="index"> <!--Comprobar si existe la propiedad score-->
                 <td>{{partido.team1}}</td>
-                <td>{{partido.score[0]}}</td>
+                <td>{{partido.score[0]}}</td> 
                 <td>-</td>
                 <td>{{partido.score[1]}}</td>
                 <td>{{partido.team2}}</td>
             </tr>
         </table>
+
+        <p v-else>{{mensajeError}}</p> 
     </div>
 </template>
 
