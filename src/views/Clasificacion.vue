@@ -20,7 +20,12 @@
         </div>
         
     </div>
-    <Jugadores v-if="nombreEquipo != '' " :nombreEquipo="nombreEquipo"></Jugadores>
+
+    <div id="divJugadores">
+        <h1>Jugadores del equipo {{nombreEquipo}}</h1>
+        <Jugadores v-if="nombreEquipo != '' " :nombreEquipo="nombreEquipo"></Jugadores>
+    </div>
+    
 
     
     
@@ -76,8 +81,12 @@ export default {
         margin: auto;
     }
 
-    Jugadores{
-        width: 30%;
+    #divJugadores{
+        width: 40%;
         float: right;
+    }
+
+    #divJugadores h1{
+        text-align: center;
     }
 </style>

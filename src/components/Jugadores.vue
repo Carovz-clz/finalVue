@@ -1,18 +1,11 @@
 <template>
     <div id="jugadores">
-        <h1 >Jugadores del equipo {{nombreEquipo}}</h1>
-        <table>
-            <tr>
-                <th>Jugador</th>
-                <th>Goles</th>
-            </tr>
+        <ul >
+            <li v-for="(jugador, index) in jugadores" :key="index">
+                {{jugador.name}} - Goles: {{jugador.scores}}
+            </li>
 
-            <tr v-for="(jugador, index) in jugadores" :key="index">
-                <td>{{jugador.name}}</td>
-                <td>{{jugador.scores}}</td>
-            </tr>
-
-        </table>
+        </ul>
 
     </div>
 </template>
@@ -54,11 +47,11 @@ export default {
 </script>
 
 <style scoped>
-    #jugadores{
+   /* #jugadores{
         text-align: center;
     }
 
     table{
         margin: auto;
-    }
+    }*/
 </style>
