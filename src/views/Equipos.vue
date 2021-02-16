@@ -3,7 +3,7 @@
         <h1>Equipos</h1>
         <ul>
             <li v-for="(equipo, index) in equipos" :key="index">{{equipo.name}}
-                <Jugadores :nombreEquipo="equipo.name"></Jugadores>
+                <JugadoresLista :nombreEquipo="equipo.name"></JugadoresLista>
                 <button  @click="nuevoJugador">Nuevo Jugador</button>
             </li>
         </ul>
@@ -12,12 +12,12 @@
 
 <script>
 import axios from 'axios'
-import Jugadores  from '../components/Jugadores.vue'
+import JugadoresLista  from '../components/JugadoresLista.vue'
 
 export default {
     name: 'Equipos',
 
-    components: {Jugadores},
+    components: {JugadoresLista},
 
     data() {
         return {

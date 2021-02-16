@@ -1,8 +1,8 @@
 <template>
     <div id="jugadores">
         <ul >
-            <li v-for="(jugador, index) in jugadores" :key="index">
-                {{jugador.name}} - Goles: {{jugador.scores}}
+            <li v-for="(jugador, index) in jugadores" :key="index" >
+                {{jugador.name}} <span v-if="componentePadre == 'clasificacion'"> - Goles: {{jugador.scores}}</span> 
             </li>
 
         </ul>
@@ -15,9 +15,9 @@
 import axios from 'axios'
 
 export default {
-    name: 'Jugadores',
+    name: 'JugadoresLista',
 
-    props: ['nombreEquipo'],
+    props: ['nombreEquipo', 'componentePadre'],
 
     data() {
         return {

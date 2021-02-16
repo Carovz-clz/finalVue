@@ -22,8 +22,8 @@
     </div>
 
     <div id="divJugadores">
-        <h1>Jugadores del equipo {{nombreEquipo}}</h1>
-        <Jugadores v-if="nombreEquipo != '' " :nombreEquipo="nombreEquipo"></Jugadores>
+        <h1 v-if="nombreEquipo != '' ">Jugadores del equipo {{nombreEquipo}}</h1>
+        <JugadoresLista v-if="nombreEquipo != '' " :nombreEquipo="nombreEquipo" componentePadre="clasificacion"></JugadoresLista>
     </div>
     
 
@@ -34,13 +34,13 @@
 <script>
 
 import axios from "axios";
-import Jugadores from "../components/Jugadores.vue"
+import JugadoresLista from "../components/JugadoresLista.vue"
 
 export default {
     name: "Clasificacion",
 
     components: {
-        Jugadores
+        JugadoresLista
     },
 
     data() {
