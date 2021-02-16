@@ -54,41 +54,8 @@ export default {
     watch: {
         nombreEquipo(newValue,oldValue){
             this.jugadores = this.recuperarJugadores(newValue);
+            this.existeJugador = false;
         }
     }
 }
 </script>
-
-<style >
-button {
-	display: inline-block;
-	background-color: #0095eb;
-	padding: 10px;
-	border: 0;
-	font-size: 1em; 
-	color: 	white;
-    font-family: "Roboto", sans-serif;
-    margin-left: 2em;
-}
-
-button:hover{
-	background-color: #046193;
-}
-
-#eliminar{
-    margin-top: 1em;    
-}
-
-input{
-    width: 50px;
-    font-size: 1em; 
-    padding: 10px;
-}
-    #divDatos{
-        margin: auto;
-    }
- /*
-    table{
-        margin: auto;
-    }*/
-</style>
