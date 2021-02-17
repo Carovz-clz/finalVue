@@ -7,7 +7,9 @@
         <input type="text" name="nombre" v-model="nombre"><br>
 
         <label for="equipo">Equipo al que pertenece: </label>
-        <input type="text" name="equipo" v-model="equipo"><br>
+        <input v-if="$route.params.equipo == null" type="text" name="equipo" v-model="equipo">
+        <input v-else type="text" name="equipo" readonly :value="$route.params.equipo">        
+        <br>
 
         <label for="goles">Goles que ha metido: </label>
         <input type="number" v-model="goles" name="goles"> 
@@ -37,6 +39,7 @@ export default {
 
     methods: {
         guardarJugador(){
+
             let jugador = {
                 name: this.nombre,
                 team: this.equipo,

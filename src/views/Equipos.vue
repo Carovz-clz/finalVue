@@ -4,7 +4,7 @@
         <ul>
             <li v-for="(equipo, index) in equipos" :key="index">{{equipo.name}}
                 <JugadoresLista :nombreEquipo="equipo.name"></JugadoresLista>
-                <button  @click="nuevoJugador">Nuevo Jugador</button>
+                <button  @click="nuevoJugador(equipo.name)">Nuevo Jugador</button>
             </li>
         </ul>
     </div>
@@ -35,6 +35,10 @@ export default {
             .then((resultado) => {
                 this.equipos = resultado.data;
             });
+        },
+
+        nuevoJugador(equipo){
+            this.$router.push({name: "NuevoJugador", params: { equipo: equipo }}); 
         }
     },
 }
