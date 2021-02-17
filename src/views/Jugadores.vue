@@ -60,7 +60,7 @@ export default {
         float: right;
     }
 
-    #divJug h2, #divEquipos h1{
+     #divEquipos h1{
         text-align: center;
     }
 </style>
