@@ -8,7 +8,7 @@
 
         <label for="equipo">Equipo al que pertenece: </label>
         <input v-if="$route.params.equipo == null" type="text" name="equipo" v-model="equipo">
-        <input v-else type="text" name="equipo" readonly :value="$route.params.equipo">        
+        <input v-else type="text" name="equipo" :value="$route.params.equipo" readonly >        
         <br>
 
         <label for="goles">Goles que ha metido: </label>
@@ -29,7 +29,7 @@ export default {
 
     data() {
         return {
-            mensaje: 0,
+            mensaje: '',
             nombre: '',
             equipo: '',
             goles: 0,
@@ -39,7 +39,9 @@ export default {
 
     methods: {
         guardarJugador(){
-
+            if(this.equipo == ''){
+                this.equipo = this.$route.params.equipo;
+            }
             let jugador = {
                 name: this.nombre,
                 team: this.equipo,
