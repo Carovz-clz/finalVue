@@ -1,6 +1,6 @@
 <template>
     <br><label for="selectJugadores">Seleccione un jugador</label><br>
-    <select v-model="jugadorSelect" id="selectJugador" name="selectJugador">
+    <select v-model="jugadorSelect" @change="enviarJugador" id="selectJugador" name="selectJugador">
         <option v-for="(jugador, index) in jugadores" :key="index" :value="jugador.id">{{jugador.name}}</option>
     </select>
 </template>
@@ -12,6 +12,8 @@ export default {
     name: 'SelectJugadores',
 
     props: ['equipo'],
+
+    emits: ['idjugador'],
 
     data() {
         return {
@@ -27,14 +29,17 @@ export default {
 
     methods: {
        async cargarJugadores(){
-            console.log('voy a cargar jugadores '+this.equipo);
 
             await axios.get('http://localhost:3000/players?team='+this.equipo)
             .then((resultado) => {
                 this.jugadores = resultado.data;
-                console.log(this.jugadores);
             });
 
+       },
+
+       enviarJugador(){
+           console.log('Jugador seleccionado: '+this.jugadorSelect)
+           this.$emit('idjugador', this.jugadorSelect);
        }
     },
 
