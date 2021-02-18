@@ -1,6 +1,6 @@
 <template>
     <br><label for="selectJugadores">Seleccione un jugador</label><br>
-    <select v-model="jugadorSelect" id="selectJugador" name="selectEquipos">
+    <select v-model="jugadorSelect" id="selectJugador" name="selectJugador">
         <option v-for="(jugador, index) in jugadores" :key="index" :value="jugador.id">{{jugador.name}}</option>
     </select>
 </template>
@@ -16,34 +16,50 @@ export default {
     data() {
         return {
             jugadorSelect: '',
+            jugadores: []
         }
     },
 
     
     created() {
+        this.cargarJugadores();
     },
 
     methods: {
-       
+       async cargarJugadores(){
+            console.log('voy a cargar jugadores '+this.equipo);
+
+            await axios.get('http://localhost:3000/players?team='+this.equipo)
+            .then((resultado) => {
+                this.jugadores = resultado.data;
+                console.log(this.jugadores);
+            });
+
+       }
     },
-    computed: {
-        jugadores() {
-            console.log('voy a cargar jugadores'+this.equipo);
+
+     watch: {
+        equipo(newValue,oldValue){
+            this.jugadores = this.cargarJugadores(newValue);
+        }
+    }
+    
+   /* computed: {
+        async jugadores() {
+            console.log('voy a cargar jugadores '+this.equipo);
             let arrayJugadores = [];
 
-            axios.get('http://localhost:3000/players')
+            await axios.get('http://localhost:3000/players?team='+this.equipo)
             .then((resultado) => {
-                resultado.data.forEach(element => {
-                    if(element.team == this.equipo){
-                        arrayJugadores.push(element);
-                    }
-                });
-
+                arrayJugadores = resultado.data;
+                console.log(arrayJugadores);
+                return arrayJugadores
             });
             
-            console.log(arrayJugadores);
-            return arrayJugadores;
+            return [1, 2, 3]
         }
-  }
+  }*/
+
+
 }
 </script>
