@@ -46,6 +46,11 @@ const routes = [
     path: '/nuevojugador',
     name: 'NuevoJugador',
     component: () => import ('../views/NuevoJugador.vue')
+  },
+  {
+    path: '/eliminarjugador',
+    name: 'EliminarJugador',
+    component: () => import ('../views/EliminarJugador.vue')
   }
 ]
 
