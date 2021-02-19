@@ -65,7 +65,7 @@ export default {
 
     computed: {
         habilitarDeshabilitar(){
-            if(this.idjugadorSeleccionado== ''){
+            if(this.idjugadorSeleccionado == 0){
                 return true;
             }else{
                 return false;
@@ -97,7 +97,7 @@ export default {
 
 #boton {
 	display: block;
-	background-color: #0095eb;
+	background-color: #7f36d1;
 	padding: 10px 45px 10px 45px;
 	border: 0;
 	font-size: 1em; 
@@ -109,7 +109,7 @@ export default {
 }
 
 #boton:hover{
-	background-color: #046193;
+	background-color: #431277;
 }
 
 #boton:disabled{
@@ -121,7 +121,7 @@ h1, p{
 }
 
 p{
-    color: #0095eb;
+    color: #7f36d1;
     font-weight: bold;
 }
 </style>

@@ -13,19 +13,11 @@
         <select v-model="equipo1"  name="equipo1">
             <option v-for="(equipo, index) in equipos" :key="index" :value="equipo.name">{{equipo.name}}</option>
         </select><br>
-        
-        <label for="goles1">Goles equipo 1</label>
-        <input type="number" name="goles1" v-model="gol1">
-        <br>
 
         <label for="equipo2">Equipo 2</label>
         <select v-model="equipo2"  name="equipo2">
             <option v-for="(equipo, index) in equipos" :key="index" :value="equipo.name">{{equipo.name}}</option>
         </select><br>
-        
-        <label for="goles2">Goles equipo 2</label>
-        <input type="number" name="goles2" v-model="gol2">
-        <br>
 
         <input id="boton" type="button" value="Guardar" @click="guardarPartido">
     </form>
@@ -47,8 +39,6 @@ export default {
             equipo1: '',
             equipo2: '',
             equipos: [],
-            gol1: '',
-            gol2: '',
             mensaje: 0
 
         }
@@ -70,8 +60,7 @@ export default {
                 round: this.jornada,
                 date: this.fecha,
                 team1: this.equipo1,
-                team2: this.equipo2,
-                score: [this.gol1, this.gol2]
+                team2: this.equipo2
             }
 
             axios.post('http://localhost:3000/matches', partido)
@@ -107,7 +96,7 @@ form input, form select{
 
 #boton {
 	display: block;
-	background-color: #0095eb;
+	background-color: #7f36d1;
 	padding: 10px 45px 10px 45px;
 	border: 0;
 	font-size: 1em; 
@@ -116,7 +105,7 @@ form input, form select{
 }
 
 #boton:hover{
-	background-color: #046193;
+	background-color: #431277;
 }
 
 h1{

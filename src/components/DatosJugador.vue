@@ -53,7 +53,7 @@ export default {
 <style >
 button {
 	display: inline-block;
-	background-color: #0095eb;
+	background-color: #7f36d1;
 	padding: 10px;
 	border: 0;
 	font-size: 1em; 
@@ -63,7 +63,7 @@ button {
 }
 
 button:hover{
-	background-color: #046193;
+	background-color: #431277;
 }
 
 #eliminar{

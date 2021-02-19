@@ -1,6 +1,7 @@
 <template>
     <br><label for="selectJugadores">Seleccione un jugador</label><br>
     <select v-model="jugadorSelect" @change="enviarJugador" id="selectJugador" name="selectJugador">
+        <option v-if="jugadorSelect == 0" value="0" selected>Seleccione jugador</option>
         <option v-for="(jugador, index) in jugadores" :key="index" :value="jugador.id">{{jugador.name}}</option>
     </select>
 </template>
@@ -17,7 +18,7 @@ export default {
 
     data() {
         return {
-            jugadorSelect: '',
+            jugadorSelect: 0,
             jugadores: []
         }
     },
@@ -46,6 +47,8 @@ export default {
      watch: {
         equipo(newValue,oldValue){
             this.jugadores = this.cargarJugadores(newValue);
+            this.jugadorSelect = 0;
+            this.$emit('idjugador', this.jugadorSelect);
         }
     }
     

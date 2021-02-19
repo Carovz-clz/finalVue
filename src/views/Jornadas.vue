@@ -1,5 +1,6 @@
 <template>
     <div id="select">
+        <h1>Jornadas</h1>
         <label for="selectJornadas">Seleccione una jornada</label><br>
         <select v-model="jornadaSeleccionada" id="selectJornadas" name="selectJornadas">
             <option v-for="(jornada, index) in jornadas" :key="index" :value="jornada">{{jornada}}</option>
@@ -57,4 +58,16 @@ export default {
     #select{
         text-align: center;
     }
+
+    select {
+        margin-bottom: 15px;
+        width: 20%;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #525c66;
+        font-size: 1em;
+        resize: horizontal;
+        margin-top: 1em;
+}
 </style>

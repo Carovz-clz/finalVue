@@ -77,10 +77,6 @@ export default {
         float: left;
     }
 
-    table{
-        margin: auto;
-    }
-
     #divJugadores{
         width: 40%;
         float: right;
@@ -89,4 +85,37 @@ export default {
     #divJugadores h1{
         text-align: center;
     }
+
+    table {
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+th {
+  font-size: 13px;
+  text-align: center;
+  padding: 8px;
+  background: #E7E7E7;
+  border-top: 4px solid #7f36d1;
+  border-bottom: 1px solid #fff;
+  color: #039;
+}
+
+td {
+  padding: 8px;
+  background: #e8edff;
+  border-bottom: 1px solid #fff;
+  color: #669;
+  border-top: 1px solid transparent;
+  text-align: center;
+}
+
+tr:hover td {
+  background: #d0dafd;
+  color: #339;
+}
 </style>

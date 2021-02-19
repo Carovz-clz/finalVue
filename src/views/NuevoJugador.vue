@@ -81,7 +81,7 @@ form input, form select{
 
 #boton {
 	display: block;
-	background-color: #0095eb;
+	background-color: #7f36d1;
 	padding: 10px 45px 10px 45px;
 	border: 0;
 	font-size: 1em; 
@@ -90,7 +90,7 @@ form input, form select{
 }
 
 #boton:hover{
-	background-color: #046193;
+	background-color: #431277;
 }
 
 h1, p{
@@ -98,7 +98,7 @@ h1, p{
 }
 
 p{
-    color: #0095eb;
+    color: #7f36d1;
     font-weight: bold;
 }
 </style>
