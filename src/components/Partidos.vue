@@ -13,7 +13,7 @@
                         {{partido.score[0]}}
                     </span>
                     <span v-else>
-                        <input type="number" v-model="gol1">
+                        <input type="number" v-model="partidosSinResultados[index].goles[0]">
                     </span>                    
                 </td> 
 
@@ -24,7 +24,7 @@
                         {{partido.score[1]}}
                     </span>
                     <span v-else>
-                        <input type="number" v-model="gol2" >
+                        <input type="number" v-model="partidosSinResultados[index].goles[1]" >
                     </span>
                 </td>
                 <td>{{partido.team2}}</td>
@@ -49,7 +49,8 @@ export default {
             partidos: [],
             mensajeError: '',
             gol1: '',
-            gol2: ''
+            gol2: '',
+            partidosSinResultados: []
         }
     },
 
@@ -58,17 +59,44 @@ export default {
     },
 
     methods: {
-        cargarPartidosJornada(jornada){
-            axios.get('http://localhost:3000/matches?round='+jornada)
+        async cargarPartidosJornada(jornada){
+            await axios.get('http://localhost:3000/matches?round='+jornada)
             .then((resultado) => {
                 this.partidos = resultado.data;
+                
+                this.partidos.forEach(element => {
+                    if(!element.score){
+                        let dato = {
+                            id: 1,
+                            goles: [0, 0]
+                        }
+
+                        console.log("dato "+dato);
+
+                        this.partidosSinResultados.push(dato);
+                    }else{
+                        this.partidosSinResultados.push(0);
+                    }
+
+                    
+                });
+
+                console.log("partidos sin resultados"+this.partidosSinResultados)
             })
             .catch((err) =>{this.mensajeError = 'Se ha producido un error al realizar la petición.'})
         },
 
         sumarGoles(partido){
-            console.log(partido);
+            //let goles = this.partidosSinResultados.find(p => p.id == partido.id);
+            console.log("holaaa: "+this.partidosSinResultados);
 
+            console.log(partido);
+             axios.patch('http://localhost:3000/matches/'+partido.id, )
+            .then( (resultado) => {
+                if (resultado.status == 201) {
+                    this.mensaje = "Suma de goles realizada correctamente";
+                }
+            });
             
         }
 
