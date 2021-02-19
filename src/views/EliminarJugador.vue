@@ -2,7 +2,7 @@
     <div id="divEliminarJugador">
         <h1>Eliminar jugador</h1>
         <label for="selectEquipos">Seleccione un equipo</label><br>
-        <select v-model="equipoSeleccionado" id="selectEquipos" name="selectEquipos">
+        <select v-model="equipoSeleccionado" id="selectEquipos" name="selectEquipos" @change="desahbilitarBoton">
             <option v-for="(equipo, index) in equipos" :key="index" :value="equipo.name">{{equipo.name}}</option>
         </select>
 
@@ -59,7 +59,7 @@ export default {
                     this.mensaje = "Jugador eliminado correctamente";
                 }
             });
-        }
+        },
 
     },
 

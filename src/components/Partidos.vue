@@ -6,12 +6,29 @@
                 <th colspan="5">Partidos de la {{jornadaSelec}}</th>
             </tr>
 
-            <tr v-for="(partido, index) in partidos" :key="index"> <!--Comprobar si existe la propiedad score-->
+            <tr v-for="(partido, index) in partidos" :key="index"> 
                 <td>{{partido.team1}}</td>
-                <td>{{partido.score[0]}}</td> 
+                <td >
+                    <span v-if="partido.hasOwnProperty('score')">
+                        {{partido.score[0]}}
+                    </span>
+                    <span v-else>
+                        <input type="number" v-model="gol1">
+                    </span>                    
+                </td> 
+
                 <td>-</td>
-                <td>{{partido.score[1]}}</td>
+
+                <td>
+                    <span v-if="partido.hasOwnProperty('score')">
+                        {{partido.score[1]}}
+                    </span>
+                    <span v-else>
+                        <input type="number" v-model="gol2" >
+                    </span>
+                </td>
                 <td>{{partido.team2}}</td>
+                <td v-if="!partido.hasOwnProperty('score')"><button id="boton" @click="sumarGoles(partido)">Guardar</button></td>
             </tr>
         </table>
 
@@ -30,7 +47,9 @@ export default {
     data() {
         return {
             partidos: [],
-            mensajeError: ''
+            mensajeError: '',
+            gol1: '',
+            gol2: ''
         }
     },
 
@@ -45,7 +64,21 @@ export default {
                 this.partidos = resultado.data;
             })
             .catch((err) =>{this.mensajeError = 'Se ha producido un error al realizar la petición.'})
+        },
+
+        sumarGoles(partido){
+            console.log(partido);
+
+            
         }
+
+
     },
+
+    watch:{
+        jornadaSelec(newValue,oldValue){
+            this.partidos = this.cargarPartidosJornada(newValue);
+        }
+    }
 }
 </script>
