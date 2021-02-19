@@ -1,3 +1,6 @@
+<!-- Componente que muestra la lista de jugadores  de un equipo y muestra 
+los goles de cada uno dependiendo del componente que lo use-->
+
 <template>
     <div id="jugadores">
         <ul >

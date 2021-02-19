@@ -1,3 +1,7 @@
+<!-- Vista de jornadas. Permite seleccionar una jornada para mostrar los resultados
+    de cada partido de la misma. 
+    Hace uso del componente Partidos -->
+
 <template>
     <div id="select">
         <h1>Jornadas</h1>

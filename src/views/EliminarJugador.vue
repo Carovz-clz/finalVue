@@ -1,3 +1,5 @@
+<!-- Vista que carga los equipos y los jugadores que cada uno de ellos y permite eliminar un jugador -->
+
 <template>
     <div id="divEliminarJugador">
         <h1>Eliminar jugador</h1>

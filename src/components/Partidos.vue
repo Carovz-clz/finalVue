@@ -1,3 +1,5 @@
+<!-- Componente que muestra los resultados de una jornada determinada en una tabla.
+    Permite añadir resultados a los partidos que no los tengan definidos. -->
 <template>
   <div id="divPartidos">
     <table v-if="mensajeError == ''">
@@ -55,7 +57,7 @@ export default {
           this.partidos = resultado.data;
 
           this.partidos.forEach((element) => {
-            if (!element.score) {
+            if (!element.score) { //Guardo un objeto con el id del partido que no tiene resultados
               let dato = {
                 id: element.id,
                 goles: [0, 0],

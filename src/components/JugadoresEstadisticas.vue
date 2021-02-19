@@ -1,3 +1,7 @@
+<!-- Componente JugadoresEstadisticas. Muestra los jugadores de un eqipo determinado.
+    Hace uso del componente DatosJugador para mostrar los datos almacenados del jugador 
+    que se pulse. -->
+
 <template>
     <div id="jugadoresDatos">
         <ul >

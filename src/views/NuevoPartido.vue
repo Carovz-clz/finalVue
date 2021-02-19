@@ -1,3 +1,5 @@
+<!-- Vista NuevoPartido. Permite insertar un nuevo partido con los equipos existentes. -->
+
 <template>
 <div id="divFormulario">
     <h1>Nuevo partido</h1>

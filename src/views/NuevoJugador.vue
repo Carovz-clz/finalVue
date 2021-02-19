@@ -1,3 +1,5 @@
+<!-- Vista de NuevoJugador. Permite añadir un jugador.
+    Si se accede a esta vista con parámetros, el quipo estará predefinido  -->
 <template>
 <div>
     <h1>Nuevo jugador</h1>

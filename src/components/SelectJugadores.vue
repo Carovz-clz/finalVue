@@ -1,3 +1,7 @@
+<!-- Componente que carga un select de jugadores de un equipo determinado.
+     Si el equipo seleccionado cambia, se vuelve a cargar.
+     Envia al componente que lo use el id del jugador que se seleccione -->
+
 <template>
     <br><label for="selectJugadores">Seleccione un jugador</label><br>
     <select v-model="jugadorSelect" @change="enviarJugador" id="selectJugador" name="selectJugador">

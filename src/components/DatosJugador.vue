@@ -1,3 +1,5 @@
+<!-- Componente DatosJugador. Permite modificar los datos de un jugador o eliminarlo -->
+
 <template>
     <div id="divDatos">
             <h3>Datos del jugador {{jugador.name}}</h3>

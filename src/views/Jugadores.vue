@@ -1,3 +1,6 @@
+<!-- Vista Jugadores. Muestra una lista de los equipos existentes. 
+    Si se pulsa sobre uno de ellos hace uso del componente JugadoresEstadisticas 
+    para mostrar una lista de jugadores y sus datos.  -->
 <template>
     <div id="divEquipos">
         <h1>Equipos</h1>
@@ -63,4 +66,9 @@ export default {
      #divEquipos h1{
         text-align: center;
     }
+
+    li{
+        margin-bottom: 0.5em;
+    }
+
 </style>

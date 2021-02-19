@@ -1,3 +1,4 @@
+<!-- Vista Inicio -->
 <template>
   <div id="imagen">
     <img alt="Vue logo" src="../assets/logoLiga.png">

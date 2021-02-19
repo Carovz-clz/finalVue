@@ -1,3 +1,4 @@
+<!-- Vista de la clasificación. Hace uso del componente JugadoresLista -->
 <template>
 
     <div id="clasificacion">

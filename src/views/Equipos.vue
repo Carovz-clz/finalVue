@@ -1,3 +1,6 @@
+<!-- Vista de equipos. Muestra una lista con los equipos y  permite añadir 
+    un nuevo jugador a cualquiera de ellos desde la vista NuevoJugador. 
+    Hace uso del componente Jugadores Lista. -->
 <template>
     <div id="divEquipos">
         <h1>Equipos</h1>

@@ -1,6 +1,8 @@
+<!-- Se cargará una vista por cada router link -->
+
 <template>
   <div>
-    <Titulo />
+    <h1 id="titPrincipal">Liga de futbol profesional de 1ª división</h1>
     <div id="nav">
       <router-link to="/inicio" class="seccion">Inicio</router-link>
       <router-link to="/clasificacion" class="seccion">Clasificación</router-link>
@@ -18,13 +20,10 @@
 </template>
 
 <script>
-import Titulo from "./components/Titulo.vue";
 
 export default {
   name: "Inicio",
-  components: {
-      Titulo,
-  },
+
   data () {
     return {
       numeroPag: 0
@@ -36,6 +35,17 @@ export default {
 </script>
 
 <style>
+#titPrincipal {
+  font-size: 2.5em;  
+  font-weight: bolder;
+  text-align: center;
+  color: whitesmoke;
+  width: 80%;
+  background-color: rgb(199, 199, 199);
+  padding: 25px;
+  float: right;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
