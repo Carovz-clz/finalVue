@@ -1,7 +1,7 @@
 <template>
     <div id="divPartidos">
        
-        <table v-if="mensajeError == ''">
+      <table v-if="mensajeError == ''">
             <tr>
                 <th colspan="5">Partidos de la {{jornadaSelec}}</th>
             </tr>
@@ -48,9 +48,9 @@ export default {
         return {
             partidos: [],
             mensajeError: '',
-            gol1: '',
-            gol2: '',
-            partidosSinResultados: []
+            partidosSinResultados: [ ],
+            objetorecuperado: {},
+            club: []
         }
     },
 
@@ -60,6 +60,7 @@ export default {
 
     methods: {
         async cargarPartidosJornada(jornada){
+
             await axios.get('http://localhost:3000/matches?round='+jornada)
             .then((resultado) => {
                 this.partidos = resultado.data;
@@ -67,39 +68,67 @@ export default {
                 this.partidos.forEach(element => {
                     if(!element.score){
                         let dato = {
-                            id: 1,
+                            id: element.id,
                             goles: [0, 0]
-                        }
-
-                        console.log("dato "+dato);
+                        };
 
                         this.partidosSinResultados.push(dato);
                     }else{
                         this.partidosSinResultados.push(0);
-                    }
-
-                    
+                    }                    
                 });
 
-                console.log("partidos sin resultados"+this.partidosSinResultados)
             })
-            .catch((err) =>{this.mensajeError = 'Se ha producido un error al realizar la petición.'})
+            .catch((err) =>{this.mensajeError = 'Se ha producido un error al cargar los partidos de la jornada '+jornada})
         },
 
-        sumarGoles(partido){
-            //let goles = this.partidosSinResultados.find(p => p.id == partido.id);
-            console.log("holaaa: "+this.partidosSinResultados);
+        async sumarGoles(partido){
 
-            console.log(partido);
-             axios.patch('http://localhost:3000/matches/'+partido.id, )
+            let objetoGoles = this.partidosSinResultados.find(p => p.id == partido.id); //Recupero el objeto que contiene los goles que se han añadido
+            let dato = { //Objeto que paso al patch para actualizar los goles del partido
+                score: [Number(objetoGoles.goles[0]), Number(objetoGoles.goles[1])]
+            } 
+
+            await axios.patch('http://localhost:3000/matches/'+partido.id, dato) //Actualizo dato del partido que se pasa por parámetro
             .then( (resultado) => {
                 if (resultado.status == 201) {
                     this.mensaje = "Suma de goles realizada correctamente";
                 }
             });
             
-        }
+            this.actualizarClasificacion(partido.team1, Number(dato.score[0]), partido.team2, Number(dato.score[1]));
+        },
 
+        actualizarClasificacion(equipo1, goles1, equipo2, goles2){
+            if(goles1 > goles2){
+                this.sumarPuntosClub(equipo1, 3);
+            }else if(goles1 < goles2){
+                this.sumarPuntosClub(equipo2, 3);
+            }else{
+                this.sumarPuntosClub(equipo1, 1);
+                this.sumarPuntosClub(equipo2, 1);
+            }
+        },
+
+        async sumarPuntosClub(equipo, ptos){ 
+            //Primero recupero el equipo con el nombre pasado por parámetro y lo guardo en el data club
+            await axios.get("http://localhost:3000/clubs?name="+equipo)
+            .then((resultado) => { 
+                this.club = resultado.data;
+            });
+
+            let dato = {
+                points: (Number(this.club[0].points) + ptos)
+            }
+
+            //Actualizo el campo points del equipo 
+            await axios.patch('http://localhost:3000/clubs/'+this.club[0].id, dato)
+            .then( (resultado) => {
+                if (resultado.status == 200) {
+                    console.log("Ptos actualizados correctamente");
+                }
+            });
+        },
 
     },
 
