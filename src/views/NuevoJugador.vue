@@ -1,33 +1,25 @@
 <!-- Vista de NuevoJugador. Permite añadir un jugador.
-    Si se accede a esta vista con parámetros, el quipo estará predefinido  -->
+    Usa el componente NuevoJugadorComponente para introducir los datos del nuevo jugador  -->
 <template>
 <div>
     <h1>Nuevo jugador</h1>
+    <NuevoJugadorComponente :nombreEquipo="''"></NuevoJugadorComponente>
 
-    <form >
-        <label for="nombre">Nombre: </label>
-        <input type="text" name="nombre" v-model="nombre"><br>
-
-        <label for="equipo">Equipo al que pertenece: </label>
-        <input v-if="$route.params.equipo == null" type="text" name="equipo" v-model="equipo">
-        <input v-else type="text" name="equipo" :value="$route.params.equipo" readonly >        
-        <br>
-
-        <label for="goles">Goles que ha metido: </label>
-        <input type="number" v-model="goles" name="goles"> 
-
-        <input id="boton" type="button" value="Guardar" @click="guardarJugador">
-    </form>
-    <p v-if="mensaje != ''">{{mensaje}}</p>
+    
 </div>
     
 </template>
 
 <script>
 import axios from 'axios'
+import NuevoJugadorComponente from '../components/NuevoJugadorComponente'
 
 export default {
     name: 'NuevoJugador',
+
+    components: {NuevoJugadorComponente},
+
+    
 
     data() {
         return {
@@ -60,48 +52,4 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-form{
-  padding: 60px;
-  max-width: 400px;
-  background-color: #E7E7E7;
-  margin: 0 auto;
-}
-
-form input, form select{
-  margin-bottom: 15px;
-  width: 100%;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; 
-  border: none; 
-  color: #525c66; 
-  font-size: 1em;
-  resize: horizontal; 
-}
-
-#boton {
-	display: block;
-	background-color: #7f36d1;
-	padding: 10px 45px 10px 45px;
-	border: 0;
-	font-size: 1em; 
-	color: 	white;
-  font-family: "Roboto", sans-serif;
-}
-
-#boton:hover{
-	background-color: #431277;
-}
-
-h1, p{
-    text-align: center;
-}
-
-p{
-    color: #7f36d1;
-    font-weight: bold;
-}
-</style>
 

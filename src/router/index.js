@@ -38,11 +38,6 @@ const routes = [
     component: () => import ('../views/Jugadores.vue')
   },
   {
-    path: '/nuevojugador/:equipo',
-    name: 'NuevoJugador',
-    component: () => import ('../views/NuevoJugador.vue')
-  },
-  {
     path: '/nuevojugador',
     name: 'NuevoJugador',
     component: () => import ('../views/NuevoJugador.vue')
