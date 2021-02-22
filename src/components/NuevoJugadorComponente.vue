@@ -39,7 +39,7 @@ export default {
     },
 
     methods: {
-        guardarJugador(){
+        async guardarJugador(){
             if(this.equipo == ''){
                 this.equipo = this.nombreEquipo;
             }
@@ -52,8 +52,8 @@ export default {
             axios.post('http://localhost:3000/players', jugador)
             .then( (resultado) => {
                 if (resultado.status == 201) {
-                    this.mensaje = "Jugador insertado correctamente";
-                    this.cargarLista();
+                    alert("Jugador insertado correctamente") ;
+                    this.$router.go();
                 }
             });
         },
