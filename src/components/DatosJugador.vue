@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
 button {
 	display: inline-block;
 	background-color: #7f36d1;
