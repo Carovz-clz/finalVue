@@ -10,7 +10,7 @@
             </li>
 
         </ul>
-    <DatosJugador :jugador="jugador" v-if="existeJugador" :jugadorEliminado="cambiarExiteJugador"></DatosJugador>
+    <DatosJugador :jugador="jugador" v-if="existeJugador" ></DatosJugador>
     </div>
 </template>
 
@@ -52,10 +52,6 @@ export default {
             this.jugador = this.jugadores.find(j => j.name == nombreJugador);
             this.existeJugador = true;
         },
-
-        cambiarExiteJugador(){
-            this.existeJugador = false;
-        }
 
     },
 

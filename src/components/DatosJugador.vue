@@ -18,8 +18,6 @@ export default {
 
     props: ['jugador'],
 
-    emits: ['jugadorEliminado'],
-
     data() {
         return {
             nGoles: '',
@@ -47,10 +45,11 @@ export default {
             });
         },
 
-        eliminarJugador(){
-            axios.delete('http://localhost:3000/players/'+this.jugador.id)
+        async eliminarJugador(){
+            await axios.delete('http://localhost:3000/players/'+this.jugador.id)
             .then( () => {
-                this.$emit('jugadorEliminado');
+                alert('Se ha eliminado al jugador correctamente.');
+                this.$router.go();
             });
         }
     },
@@ -85,8 +84,6 @@ input{
     #divDatos{
         margin: auto;
     }
- /*
-    table{
-        margin: auto;
-    }*/
+    
+    
 </style>

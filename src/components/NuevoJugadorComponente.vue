@@ -7,7 +7,9 @@
         <input type="text" name="nombre" v-model="nombre"><br>
 
         <label for="equipo">Equipo al que pertenece: </label>
-        <input v-if="nombreEquipo == ''" type="text" name="equipo" v-model="equipo">
+        <select v-if="nombreEquipo == ''" v-model="equipo" id="selectEquipos" name="selectEquipos">
+            <option v-for="(e, index) in equipos" :key="index" :value="e.name">{{e.name}}</option>
+        </select>
         <input v-else type="text" name="equipo" :value="nombreEquipo" readonly >        
         <br>
 
@@ -32,8 +34,13 @@ export default {
             nombre: '',
             equipo: '',
             goles: 0,
+            equipos: []
 
         }
+    },
+
+    created() {
+        this.cargarEquipos();
     },
 
     methods: {
@@ -53,6 +60,13 @@ export default {
                     alert("Jugador insertado correctamente") ;
                     this.$router.go();
                 }
+            });
+        },
+
+        cargarEquipos(){
+            axios.get('http://localhost:3000/clubs')
+            .then((resultado) => {
+                this.equipos = resultado.data;
             });
         },
     },

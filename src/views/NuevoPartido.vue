@@ -113,4 +113,10 @@ form input, form select{
 h1{
     text-align: center;
 }
+
+p{
+    color: #7f36d1;
+    font-weight: bold;
+    text-align: center;
+}
 </style>

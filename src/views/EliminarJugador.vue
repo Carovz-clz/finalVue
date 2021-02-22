@@ -12,8 +12,6 @@
 
         <button id="boton" :disabled="habilitarDeshabilitar" @click="eliminarJugador">Eliminar Jugador</button>
 
-        <p v-if="mensaje != ''">{{mensaje}}</p>
-
     </div>
 </template>
 
@@ -32,8 +30,7 @@ export default {
         return {
             equipos: [],
             equipoSeleccionado: '',
-            idjugadorSeleccionado: '',
-            mensaje: ''
+            idjugadorSeleccionado: ''
         }
     },
 
@@ -58,7 +55,8 @@ export default {
             axios.delete('http://localhost:3000/players/'+this.idjugadorSeleccionado)
             .then( (resultado) => {
                  if (resultado.status == 200) {
-                    this.mensaje = "Jugador eliminado correctamente";
+                    alert("Jugador eliminado correctamente.");
+                    this.$router.go();
                 }
             });
         },
@@ -118,12 +116,9 @@ export default {
     background-color: grey;
 }
 
-h1, p{
+h1{
     text-align: center;
 }
 
-p{
-    color: #7f36d1;
-    font-weight: bold;
-}
+
 </style>
