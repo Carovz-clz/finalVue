@@ -18,6 +18,8 @@ export default {
 
     props: ['jugador'],
 
+    emits: ['jugadorEliminado'],
+
     data() {
         return {
             nGoles: '',
@@ -46,7 +48,10 @@ export default {
         },
 
         eliminarJugador(){
-            axios.delete('http://localhost:3000/players/'+this.jugador.id);
+            axios.delete('http://localhost:3000/players/'+this.jugador.id)
+            .then( () => {
+                this.$emit('jugadorEliminado');
+            });
         }
     },
 }

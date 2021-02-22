@@ -24,8 +24,6 @@ import axios from 'axios'
 export default {
     name: 'NuevoJugadorComponente',
 
-    emits: ['cargarLista'],
-
     props: ['nombreEquipo'],
 
      data() {
@@ -57,10 +55,6 @@ export default {
                 }
             });
         },
-
-        cargarLista(){
-            this.$emit('cargarLista');
-        }
     },
 }
 </script>

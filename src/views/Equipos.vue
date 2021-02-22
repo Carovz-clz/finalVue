@@ -14,7 +14,7 @@
         
 
         <div id="divNuevoJugador" v-if="nuevoJugador">
-            <NuevoJugadorComponente :nombreEquipo="nombreEquipo" @cargarLista="recargarLista"></NuevoJugadorComponente>
+            <NuevoJugadorComponente :nombreEquipo="nombreEquipo"></NuevoJugadorComponente>
         </div>
     </div>
    
@@ -55,10 +55,6 @@ export default {
             this.nuevoJugador = true;
         },
 
-        recargarLista(){
-            this.equipos = [];
-            this.cargarEquipos();
-        }
     },
 }
 </script>
